@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { ProductModel } from 'src/app/models/product.model';
 import { ProductService } from 'src/app/services/product.service';
@@ -14,8 +15,9 @@ export class ProductListComponent implements OnInit {
 
   products: ProductModel[] = [];
   loading = false;
+  userName = sessionStorage.getItem("uname");
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private router: Router) { }
 
   ngOnInit(): void {
     this.loading = true;
@@ -41,6 +43,14 @@ export class ProductListComponent implements OnInit {
       }
     })
 
+  }
+
+  logout(){
+    // Salir del sistema
+    this.productService.logout();
+
+    // Redirigir hacia login
+    this.router.navigate(['login']);
   }
 
 }
