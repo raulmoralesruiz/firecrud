@@ -15,6 +15,8 @@ export class ProductListComponent implements OnInit {
 
   products: ProductModel[] = [];
   loading = false;
+
+  // usuario activo
   userName = sessionStorage.getItem("uname");
 
   constructor(private productService: ProductService, private router: Router) { }

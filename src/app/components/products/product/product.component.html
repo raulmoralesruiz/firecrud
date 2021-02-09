@@ -1,59 +1,74 @@
-<h1>Producto</h1>
-
-<hr>
-
-<div class="row text-center">
-    <div class="col">
-        <button routerLink="/products"
-        class="btn btn-primary">
-            <i class="fa fa-arrow-left" aria-hidden="true"> Volver</i>
-        </button>
+<div class="mx-auto" *ngIf="userName == undefined">
+    <div class="card mx-auto text-white mb-3" style="max-width: 18rem;">
+        <div class="card-header bg-danger text-center">ERROR</div>
+        <div class="card-body bg-dark">
+            <h5 class="card-title">Acceso no autorizado</h5>
+            <p class="card-text">Debes iniciar sesión para acceder al contenido de esta sección</p>
+        </div>
     </div>
 </div>
 
-<div class="row">
-    <div class="col">
 
-        <form (ngSubmit)="guardar(f)" #f="ngForm">
+<div *ngIf="userName">
+    <h1>Producto</h1>
 
-            <!-- <div class="form-group">
+    <hr>
+
+    <div class="row text-center">
+        <div class="col">
+            <button routerLink="/products" class="btn btn-primary">
+                <i class="fa fa-arrow-left" aria-hidden="true"> Volver</i>
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+
+            <form (ngSubmit)="guardar(f)" #f="ngForm">
+
+                <!-- <div class="form-group">
                 <label for="fireId">Firebase ID</label>
                 <input id="fireId" name="fireId" type="text" class="form-control" disabled="disabled" placeholder="Firebase ID" [(ngModel)]="product.id">
                 <small class="form-text text-muted">Este campo es autogenerado</small>
             </div> -->
 
-            <div class="form-group">
-                <label for="name">Nombre</label>
-                <input id="name" name="name" type="text" class="form-control" placeholder="Nombre del producto" required [(ngModel)]="product.name">
-                <small class="form-text text-muted">Este campo es obligatorio</small>
-            </div>
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input id="name" name="name" type="text" class="form-control" placeholder="Nombre del producto"
+                        required [(ngModel)]="product.name">
+                    <small class="form-text text-muted">Este campo es obligatorio</small>
+                </div>
 
-            <div class="form-group">
-                <label for="amount">Cantidad</label>
-                <input id="amount" name="amount" type="number" class="form-control" min="1" placeholder="Número de unidades" [(ngModel)]="product.amount">
-                
-                <button class="btn btn-success w-50" type="button" (click)="sumarCantidad()">
-                    <i class="fa fa-plus"></i>
-                </button>
-                <button class="btn btn-danger w-50" type="button" (click)="restarCantidad()">
-                    <i class="fa fa-minus"></i>
-                </button>
-            </div>
+                <div class="form-group">
+                    <label for="amount">Cantidad</label>
+                    <input id="amount" name="amount" type="number" class="form-control" min="1"
+                        placeholder="Número de unidades" [(ngModel)]="product.amount">
 
-            <div class="form-group">
-                <label for="category">Categoría</label>
-                <input id="category" name="category" type="text" class="form-control" placeholder="Categoría del producto" [(ngModel)]="product.category">
-            </div>
+                    <button class="btn btn-success w-50" type="button" (click)="sumarCantidad()">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                    <button class="btn btn-danger w-50" type="button" (click)="restarCantidad()">
+                        <i class="fa fa-minus"></i>
+                    </button>
+                </div>
 
-            <hr>
+                <div class="form-group">
+                    <label for="category">Categoría</label>
+                    <input id="category" name="category" type="text" class="form-control"
+                        placeholder="Categoría del producto" [(ngModel)]="product.category">
+                </div>
 
-            <div class="form-group text-center">
-                <button class="btn btn-primary w-25" type="submit">
-                    <i class="fa fa-save"></i>
-                </button>
-            </div>
+                <hr>
 
-        </form>
+                <div class="form-group text-center">
+                    <button class="btn btn-primary w-25" type="submit">
+                        <i class="fa fa-save"></i>
+                    </button>
+                </div>
 
+            </form>
+
+        </div>
     </div>
 </div>

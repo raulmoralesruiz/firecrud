@@ -15,17 +15,20 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 // components
 import { ProductListComponent } from './components/products/product-list/product-list.component';
 import { ProductComponent } from './components/products/product/product.component'
+import { LoginComponent } from './components/user/login/login.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 // services
 import { ProductService } from './services/product.service';
-import { LoginComponent } from './components/user/login/login.component';
+import { ChatService } from './services/chat.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductListComponent,
     ProductComponent,
-    LoginComponent
+    LoginComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import { LoginComponent } from './components/user/login/login.component';
     FormsModule,
     HttpClientModule,
   ],
-  providers: [ProductService],
+  providers: [ProductService, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,6 +16,9 @@ import Swal from 'sweetalert2';
 export class ProductComponent implements OnInit {
   product: ProductModel = new ProductModel();
 
+  // usuario activo
+  userName = sessionStorage.getItem("uname");
+
   constructor(
     private productService: ProductService,
     private route: ActivatedRoute,) {}

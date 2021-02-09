@@ -19,19 +19,14 @@ export class ProductService {
   public usuario: any = {};
 
   constructor(private http: HttpClient, public auth: AngularFireAuth, private router: Router) {
-    // this.auth.authState.subscribe(user => {
-    //   console.log('Estado del usuario: ', user);
+    this.auth.authState.subscribe(user => {
+      if (!user) {
+        return;
+      }
 
-    //   if (!user) {
-    //     return;
-    //   }
-
-    //   this.usuario.nombre = user.displayName;
-    //   this.usuario.uid = user.uid;
-
-    //   console.log(this.usuario.nombre);
-    //   console.log(this.usuario.uid);
-    // })
+      this.usuario.nombre = user.displayName;
+      this.usuario.uid = user.uid;
+    })
   }
 
   /* Método que añade un producto a la base de datos firebase */
@@ -102,7 +97,7 @@ export class ProductService {
     this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
 
     this.auth.authState.subscribe(user => {
-      console.log('Estado del usuario: ', user);
+      // console.log('Estado del usuario: ', user);
 
       if (!user) {
         return;
